@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX - API REST</title>
+    <link rel="stylesheet" href="ajax.css">
+    <!-- Incluir jQuery desde un CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form>
+        <label for="nombre">NOMBRE:</label>
+        <label id="name">...</label><br> <!-- Label para mostrar el nombre -->
+
+        <label for="email">EMAIL:</label>
+        <label id="mail">...</label><br> <!-- Label para mostrar el email -->
+
+        <button type="button" id="consultarAPI">Consultar API</button>
+    </form>
+
+    <!-- Elemento para mostrar el resultado de la API -->
+    <div id="resultadoAPI"></div>
+
+    <script>
+        // Función AJAX para consultar la API
+        $('#consultarAPI').on('click', function() {
+            $.ajax({
+                url: 'https://jsonplaceholder.typicode.com/users/7',
+                method: 'GET',
+                success: function(data) {
+                    var nombre = data.name;
+                    var email = data.email;
+                    $('#name').text(nombre); // Actualizar el contenido del label con id 'name'
+                    $('#mail').text(email);  // Actualizar el contenido del label con id 'mail'
+                },
+                error: function() {
+                    $('#resultadoAPI').text('Error al consultar la API.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

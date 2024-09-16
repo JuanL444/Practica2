@@ -1,0 +1,59 @@
+/* Estilo general del cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8; /* Fondo suave azul claro */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Estilo del formulario */
+form {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #007BFF; /* Borde azul */
+    border-radius: 10px;
+    background-color: #ffffff; /* Fondo blanco para el formulario */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilo de las etiquetas */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #007BFF; /* Color azul */
+    font-weight: bold;
+}
+
+/* Estilo de los campos de entrada */
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #007BFF; /* Borde azul */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Estilo del botón */
+button {
+    background-color: #007BFF; /* Fondo azul */
+    color: #ffffff; /* Texto blanco */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul más oscuro en hover */
+}
+
+/* Estilo del campo de RFC */
+input[readonly] {
+    background-color: #e9ecef; /* Fondo gris claro */
+    border: 1px solid #007BFF; /* Borde azul */
+    color: #495057; /* Color del texto */
+}

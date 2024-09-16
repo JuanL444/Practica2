@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PRACTICA 2 - RFC</title>
+    <link rel="stylesheet" href="rfc.css"> <!-- Enlace al archivo CSS -->
+
+</head>
+<body>
+    <form>
+        <label for="nombre">NOMBRE:</label>
+        <input type="text" id="nombre" name="nombre"><br>
+
+        <label for="apellidoPat">APELLIDO PAT.:</label>
+        <input type="text" id="apellidoPat" name="apellidoPat"><br>
+
+        <label for="apellidoMat">APELLIDO MAT.:</label>
+        <input type="text" id="apellidoMat" name="apellidoMat"><br>
+
+        <label for="fechaNacimiento">FECHA NACIMIENTO:</label>
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento"><br>
+
+        <button type="button" onclick="generarRFC()">GENERAR UN RFC</button><br>
+
+        <label for="rfc">RFC:</label>
+        <input type="text" id="rfc" name="rfc" readonly><br>
+
+        
+    </form>
+    
+    <script>
+        function generarRFC() {
+            const nombre = document.getElementById('nombre').value.trim().toUpperCase();
+            const apellidoPat = document.getElementById('apellidoPat').value.trim().toUpperCase();
+            const apellidoMat = document.getElementById('apellidoMat').value.trim().toUpperCase();
+            const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+            const vocales = 'AEIOU';
+            let rfc = '';
+
+            // Posición 1: Primera letra del apellido paterno
+            rfc += apellidoPat.charAt(0);
+
+            // Posición 2: Siguiente vocal del apellido paterno
+            for (let i = 1; i < apellidoPat.length; i++) {
+                if (vocales.includes(apellidoPat.charAt(i))) {
+                    rfc += apellidoPat.charAt(i);
+                    break;
+                }
+            }
+
+            // Posición 3: Primera letra del apellido materno
+            rfc += apellidoMat.charAt(0);
+
+            // Posición 4: Primera letra del nombre
+            rfc += nombre.charAt(0);
+
+            // Posiciones 5 y 6: Últimos dos dígitos del año de nacimiento
+            const year = fechaNacimiento.substring(2, 4);
+            rfc += year;
+
+            // Posiciones 7 y 8: Dos dígitos del mes de nacimiento
+            const month = fechaNacimiento.substring(5, 7);
+            rfc += month;
+
+            // Posiciones 9 y 10: Dos dígitos del día de nacimiento
+            const day = fechaNacimiento.substring(8, 10);
+            rfc += day;
+
+            // Posiciones 11 y 12: Clave diferenciadora de homonimia (puede ser cualquier combinación de letras y números)
+            rfc += 'XX';
+
+            // Posición 13: Un dígito verificador.
+            rfc += '9';
+            
+            
+            //se muestra la rfc en pantalla
+            document.getElementById('rfc').value = rfc;
+            
+            //proceso extraido de https://exceltotal.com/generar-rfc-en-excel/
+        }
+    </script>
+</body>
+</html>
